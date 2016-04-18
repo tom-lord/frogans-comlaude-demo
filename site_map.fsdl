@@ -7,55 +7,50 @@
 
 	<resdraw resid='resdraw1' size='480,480' figure='ellipse' stroke='off' color='#B2FFFF' />
 
-	<layer layerid='layer1' leapout='all' resref='resdraw1' opacity='75' pos='639,0' align='right-top' combine='add' /> 
+	<layer layerid='layer1' leapout='all' resref='resdraw1' opacity='75' pos='639,0' align='right-top' combine='add' />
 
 
-	<!-- 2. Set a font, prepare a text resource, set a shadow, and add a layer to the vignette representation -->
+	<!-- "Back arrow" button -->
 
 	<setfont fontid='setfont1'>
-		<font scripts='default' pfont='112-2-sans-r' height='40' color='#ffffff' />
-	</setfont>
-
-	<restext resid='restext1' size='480,255' orientation='h-ttb-ltr' fontref='setfont1' talign='center'>
-		<text>Slide #2</text>
-	</restext>
-
-    <setshadow shadowid='setshadow1'>
-		<shadow rpos='5,5' color='#000000' blur='5' opacity='80' combine='add' />
-    </setshadow>
-
-	<layer layerid='layer2' leapout='vignette' resref='restext1' opacity='100' pos='430,240' combine='add' shadowref='setshadow1' />
-
-
-	<!-- 3. Set a font, prepare a text resource, and add a layer to the lead representation -->
-
-	<setfont fontid='setfont2'>
 		<font scripts='default' pfont='112-2-sans-r' height='20' color='#000000' />
 	</setfont>
 
-	<restext resid='restext2' size='480,70' orientation='h-ttb-ltr' fontref='setfont2' talign='center'>
-		<text>Slide #2</text>
-	</restext>
-
-	<layer layerid='layer3' leapout='lead' resref='restext2' opacity='100' pos='430,120' combine='cutout' shadowref='setshadow1' /> 
-
-
-	<!-- 5. Assemble a button by preparing drawing and text resources, and by adding layers to the lead representation -->
-
-	<file fileid='file2' nature='static' name='/home.fsdl' />
+	<file fileid='home_file' nature='static' name='/home.fsdl' />
 
 	<resdraw resid='resdraw2' size='80,50' figure='rect' stroke='off' color='#ff8000' />
 	<resdraw resid='resdraw3' size='130,50' figure='roundrect' stroke='off' round='50,50' color='#00ff00' />
-	<restext resid='restext3' size='50,70' orientation='h-ttb-ltr' fontref='setfont2' talign='center'>
+	<restext resid='restext1' size='50,70' orientation='h-ttb-ltr' fontref='setfont1' talign='center'>
 		<text>&#x2192;</text>
 	</restext>
 
-	<button buttonid='button1' goto='slide' fileref='file2' >
-		
-		<layer layerid='layer5' leapout='lead' resref='resdraw2' pos='430,370' combine='clip' visible='nofocus'/> 
-		<layer layerid='layer6' leapout='lead' resref='resdraw3' pos='430,370' combine='clip' visible='focus'/> 
-		<layer layerid='layer7' leapout='lead' resref='restext3' flip='xdir' pos='430,372' combine='clip' visible='always'/> 
+	<button buttonid='back_button' goto='slide' fileref='home_file' >
+
+		<layer layerid='layer2' leapout='lead' resref='resdraw2' pos='400,450' combine='clip' visible='nofocus'/>
+		<layer layerid='layer3' leapout='lead' resref='resdraw3' pos='400,450' combine='clip' visible='focus'/>
+		<layer layerid='layer4' leapout='lead' resref='restext1' flip='xdir' pos='400,452' combine='clip' visible='always'/>
 
 	</button>
+
+
+	<!-- Slide Links -->
+
+	<setfont fontid='setfont2'>
+		<font scripts='default' pfont='112-2-sans-r' height='15' color='#000000' />
+	</setfont>
+
+	<file fileid='file_people_logo' nature='static' name='/images/people_logo.png' cache='on' />
+	<resimage resid='res_people_logo' size='70,70' fileref='file_people_logo' />
+	<restext resid='res_people_text' size='150,70' orientation='h-ttb-ltr' fontref='setfont2' talign='center'>
+		<text>Staff</text>
+	</restext>
+	<button buttonid='people_button' goto='slide' fileref='home_file' >
+    <layer layerid='layer5' leapout='lead' resref='res_people_logo' pos='600,300' align='right-bottom' combine='clip' visible='always' />
+		<layer layerid='layer6' leapout='lead' resref='res_people_text' pos='400,270' combine='clip' visible='focus'/>
+	</button>
+
+
+
+
 
 </frogans-fsdl>
