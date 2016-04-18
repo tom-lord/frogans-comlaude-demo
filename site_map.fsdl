@@ -2,14 +2,10 @@
 
 <frogans-fsdl version='3.0'>
 
-	<!-- This FSDL document and its auxiliary files are part of a sample Frogans site
-		 provided by the OP3FT to help you create your own Frogans sites. You are
-		 free to use, copy, distribute, modify, adapt, or share this sample Frogans site. --> 
 
+	<!-- Main circle -->
 
-	<!-- 1. Prepare a drawing resource, and add a layer to the lead and vignette representations -->
-
-	<resdraw resid='resdraw1' size='420,480' figure='roundrect' stroke='off' round='80,80' color='#98000a' />
+	<resdraw resid='resdraw1' size='480,480' figure='ellipse' stroke='off' color='#B2FFFF' />
 
 	<layer layerid='layer1' leapout='all' resref='resdraw1' opacity='75' pos='639,0' align='right-top' combine='add' /> 
 
@@ -42,16 +38,6 @@
 	</restext>
 
 	<layer layerid='layer3' leapout='lead' resref='restext2' opacity='100' pos='430,120' combine='cutout' shadowref='setshadow1' /> 
-
-
-	<!-- 4. Prepare an image resource, and add a layer to the lead and vignette representations 
-			Image credits: http://grin.hq.nasa.gov/ABSTRACTS/GPN-2000-001138.html -->
-
-	<file fileid='file1' nature='static' name='/images/world240x240.png' cache='on' />
-
-	<resimage resid='resimage1' size='240,240' fileref='file1' />
-
-	<layer layerid='layer4' leapout='all' resref='resimage1' pos='0,240' align='left-middle' combine='add' />
 
 
 	<!-- 5. Assemble a button by preparing drawing and text resources, and by adding layers to the lead representation -->
